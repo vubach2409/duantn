@@ -30,6 +30,7 @@ Route::post('admin/login', [AuthController::class, 'handleLogin'])->name('auth.l
 Route::post('admin/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 //quản lý người dùng
-Route::get('admin/list-user', [UserController::class, 'showListUser'])->name('user.list');
+Route::get('admin/list-landlord', [UserController::class, 'showListLandlord'])->name('user.listLandlord');
+Route::get('admin/list-renter', [UserController::class, 'showListRenter'])->name('user.listRenter');
 
 
