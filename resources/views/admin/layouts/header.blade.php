@@ -1,9 +1,9 @@
 <div class="layout-width">
-    @if (session('success'))
+    {{-- @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @endif
+    @endif --}}
 
     <div class="navbar-header">
         <div class="d-flex">

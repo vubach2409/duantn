@@ -59,11 +59,10 @@
                 <div class="collapse menu-dropdown" id="sidebarApps">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
-                            <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                            <a href="{{ route('room.list') }}" class="nav-link">
                                 Danh sách phòng
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarCalendar">
+                            {{-- <div class="collapse menu-dropdown" id="sidebarCalendar">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="apps-calendar.html" class="nav-link" data-key="t-main-calender">
@@ -74,14 +73,16 @@
                                             data-key="t-month-grid"> Month Grid </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </li>
-
+                        <li class="nav-item">
+                            <a href="{{ route('service.list') }}" class="nav-link">
+                                Danh sách dịch vụ
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
-
-
 
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button"

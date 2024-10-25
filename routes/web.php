@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +35,19 @@ Route::post('admin/logout', [AuthController::class, 'logout'])->name('auth.logou
 Route::get('admin/list-landlord', [UserController::class, 'showListLandlord'])->name('user.listLandlord');
 Route::get('admin/list-renter', [UserController::class, 'showListRenter'])->name('user.listRenter');
 
+Route::get('admin/service', [ServiceController::class, 'index'])->name('service.list');
+Route::get('admin/service/create', [ServiceController::class, 'create'])->name('service.create');
+Route::post('admin/service/create', [ServiceController::class, 'store'])->name('service.store');
+Route::get('admin/service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
+Route::put('admin/service/{id}', [ServiceController::class, 'update'])->name('service.update');
+Route::delete('admin/service/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
+
+Route::get('admin/room', [RoomController::class, 'index'])->name('room.list');
+Route::get('admin/room/create', [RoomController::class, 'create'])->name('room.create');
+Route::post('admin/room/create', [RoomController::class, 'store'])->name('room.store');
+Route::get('admin/room/{id}/edit', [RoomController::class, 'edit'])->name('room.edit');
+Route::put('admin/room/{id}', [RoomController::class, 'update'])->name('room.update');
+Route::delete('admin/room/{id}', [RoomController::class, 'destroy'])->name('room.destroy');
+
+Route::get('admin/service/{id}', [ServiceController::class, 'show'])->name('service.show');
 

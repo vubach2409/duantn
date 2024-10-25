@@ -1,0 +1,70 @@
+@extends('admin.master')
+@section('title')
+    Thêm mới dịch vụ
+@endsection
+
+@section('content')
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">Thêm mới dịch vụ</h4>
+                    <div class="flex-shrink-0">
+                        {{-- <div class="form-check form-switch form-switch-right form-switch-md">
+                            <label for="form-grid-showcode" class="form-label text-muted">Show
+                                Code</label>
+                            <input class="form-check-input code-switcher" type="checkbox" id="form-grid-showcode">
+                        </div> --}}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="live-preview">
+                        <form action="{{ route('service.store') }}" class="row gy-4 d-flex justify-content-center" method="POST">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <div class="col-xxl-6 col-md-6 mb-2">
+                                <div>
+                                    <label for="" class="form-label">Loại dịch vụ</label>
+                                    <input type="text" class="form-control" name="service_type">
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-md-6 mb-2">
+                                <div>
+                                    <label for="" class="form-label">Giá điện</label>
+                                    <input type="text" class="form-control" name="electric">
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-md-6 mb-2">
+                                <div>
+                                    <label for="" class="form-label">Giá nước</label>
+                                    <input type="text" class="form-control" name="water">
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-md-6 mb-2">
+                                <div>
+                                    <label for="" class="form-label">Wifi</label>
+                                    <input type="text" class="form-control" name="wifi">
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-md-6 mb-2">
+                                <div>
+                                    <label for="" class="form-label">Giá vệ sinh</label>
+                                    <input type="text" class="form-control" name="garbage">
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-md-6 mb-2">
+                                <div>
+                                    <label for="" class="form-label">Dịch vụ khác</label>
+                                    <input type="text" class="form-control" name="other">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-md-12 mb-2">
+                                <button type="submit" class="btn btn-primary">Chấp nhận</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

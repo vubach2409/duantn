@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Room::class)->constrained();
-            $table->foreignIdFor(User::class)->constrained();
+            // $table->foreignIdFor(Room::class)->constrained();
+            // $table->foreignIdFor(User::class)->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('service_type');
             $table->decimal('electric')->nullable();
             $table->decimal('water')->nullable();
