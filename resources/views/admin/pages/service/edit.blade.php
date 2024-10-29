@@ -23,35 +23,35 @@
                             
                             <div class="col-xxl-6 col-md-6 mb-2">
                                 <div>
-                                    <label for="" class="form-label">Loại dịch vụ</label>
+                                    <label for="" class="form-label">Tên dịch vụ *</label>
                                     <input type="text" class="form-control" name="service_type" value="{{ $service->service_type }}">
                                 </div>
                             </div>
 
                             <div class="col-xxl-6 col-md-6 mb-2">
                                 <div>
-                                    <label for="" class="form-label">Giá điện</label>
+                                    <label for="" class="form-label">Giá điện *</label>
                                     <input type="text" class="form-control" name="electric" value="{{ $service->electric }}">
                                 </div>
                             </div>
 
                             <div class="col-xxl-6 col-md-6 mb-2">
                                 <div>
-                                    <label for="" class="form-label">Giá nước</label>
+                                    <label for="" class="form-label">Giá nước *</label>
                                     <input type="text" class="form-control" name="water" value="{{ $service->water }}">
                                 </div>
                             </div>
 
                             <div class="col-xxl-6 col-md-6 mb-2">
                                 <div>
-                                    <label for="" class="form-label">Wifi</label>
+                                    <label for="" class="form-label">Wifi *</label>
                                     <input type="text" class="form-control" name="wifi" value="{{ $service->wifi }}">
                                 </div>
                             </div>
 
                             <div class="col-xxl-6 col-md-6 mb-2">
                                 <div>
-                                    <label for="" class="form-label">Giá vệ sinh</label>
+                                    <label for="" class="form-label">Giá vệ sinh *</label>
                                     <input type="text" class="form-control" name="garbage" value="{{ $service->garbage }}">
                                 </div>
                             </div>
@@ -63,8 +63,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-2 col-md-12 mb-2">
-                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            <div class="col-sm-12 col-md-12 mb-2 text-end">
+                                <button type="submit" class="btn btn-success">Cập nhật</button>
+                                <button type="reset" class="btn btn-warning">Nhập lại</button>
+                                <button type="reset" class="btn btn-info" onclick="window.history.back()">Quay lại</button>
                             </div>
                         </form>
                     </div>
