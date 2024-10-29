@@ -5,11 +5,6 @@
 
 @section('content')
     <div class="table-responsive table-card">
-        @if (session('success'))
-            <div class="alert alert-success" id="success-alert">
-                {{ session('success') }}
-            </div>
-        @endif
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -21,8 +16,16 @@
                 }
             });
         </script>
-        <div class="col-sm-2 col-md-12 mb-2">
-            <a href="{{ route('service.create') }}" class="btn btn-info">thêm mới</a>
+        <div class="col-xl-6 col-sm-6 col-md-12 mb-2">
+            @if (session('success'))
+                <div class="alert alert-success" id="success-alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
+
+        <div class="col-xl-12 col-sm-6 col-md-12 mb-2 text-end">
+            <a href="{{ route('service.create') }}" class="btn btn-info">Thêm mới+</a>
         </div>
         <table class="table table-nowrap table-striped-columns mb-0">
             <thead class="table-light">

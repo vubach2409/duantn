@@ -15,13 +15,14 @@
                         @csrf
                         <div class="row gy-4">
                             <div class="col-md-6">
-                                <label for="name" class="form-label">Tên Phòng</label>
+                                <label for="name" class="form-label">Tên Phòng *</label>
                                 <input type="text" name="name" class="form-control" required>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="category" class="form-label">Danh Mục</label>
+                                <label for="category" class="form-label">Danh Mục *</label>
                                 <select name="category_id" class="form-select">
+                                    <option value="">Chọn danh mục</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -29,7 +30,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="service" class="form-label">Chọn Dịch Vụ</label>
+                                <label for="service" class="form-label">Chọn Dịch Vụ *</label>
                                 <select name="service_id" id="service" class="form-select">
                                     <option value="">Chọn dịch vụ</option>
                                     @foreach ($services as $service)
@@ -46,27 +47,29 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="price" class="form-label">Giá</label>
+                                <label for="price" class="form-label">Giá *</label>
                                 <input type="text" name="price" class="form-control" required>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="image" class="form-label">Hình Ảnh</label>
+                                <label for="image" class="form-label">Hình Ảnh *</label>
                                 <input type="file" name="image" class="form-control" required>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="price" class="form-label">Địa chỉ</label>
+                                <label for="price" class="form-label">Địa chỉ *</label>
                                 <input type="text" name="address" class="form-control" required>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="description" class="form-label">Mô tả</label>
+                                <label for="description" class="form-label">Mô tả *</label>
                                 <textarea name="description" class="form-control" rows="4" required></textarea>
                             </div>
 
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Lưu</button>
+                            <div class="col-sm-12 col-md-12 mb-2 text-end">
+                                <button type="submit" class="btn btn-success ">Thêm mới</button>
+                                <button type="reset" class="btn btn-warning">Nhập lại</button>
+                                <button type="reset" class="btn btn-info" onclick="window.history.back()">Quay lại</button>
                             </div>
                         </div>
                     </form>
