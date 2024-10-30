@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
@@ -51,3 +52,8 @@ Route::delete('admin/room/{id}', [RoomController::class, 'destroy'])->name('room
 
 Route::get('admin/service/{id}', [ServiceController::class, 'show'])->name('service.show');
 
+
+
+
+//** guest  */
+Route::get('guest/home',[HomeController::class,'home'])->name('guest.home');
