@@ -99,6 +99,11 @@
                             <a href="pages-starter.html" class="nav-link" data-key="t-starter">
                                 Tin chờ phê duyệt </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('article.create') }}" class="nav-link">
+                                Đăng tin
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
