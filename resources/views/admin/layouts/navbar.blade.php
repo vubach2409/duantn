@@ -93,12 +93,17 @@
                 <div class="collapse menu-dropdown" id="sidebarPages">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
-                            <a href="pages-starter.html" class="nav-link" data-key="t-starter">
+                            <a href="{{ route('article.list')}}" class="nav-link" data-key="t-starter">
                                 Tin đã đăng </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages-starter.html" class="nav-link" data-key="t-starter">
                                 Tin chờ phê duyệt </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('article.create') }}" class="nav-link">
+                                Đăng tin
+                            </a>
                         </li>
                     </ul>
                 </div>

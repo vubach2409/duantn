@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\RoomController;
@@ -57,3 +57,11 @@ Route::get('admin/service/{id}', [ServiceController::class, 'show'])->name('serv
 
 //** guest  */
 Route::get('guest/home',[HomeController::class,'home'])->name('guest.home');
+
+//Bài viết
+Route::get('admin/article', [ArticleController::class, 'index'])->name('article.list');  
+Route::get('admin/article/create', [ArticleController::class, 'create'])->name('article.create');         // Lấy tất cả bài viết
+Route::post('admin/article/create', [ArticleController::class, 'store'])->name('article.store');           // Tạo bài viết mới
+Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');   // Lấy bài viết theo ID
+Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');      // Cập nhật bài viết
+Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');  // Xóa bài viết
