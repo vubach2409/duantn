@@ -26,11 +26,11 @@ Route::get('/admin/welcome', function () {
 });
 
 //đăng ký đăng nhập
-Route::get('admin/register', [AuthController::class, 'showFormRegister'])->name('auth.register');
-Route::post('admin/register', [AuthController::class, 'handleRegister'])->name('auth.register');
-Route::get('admin/login', [AuthController::class, 'showFormLogin'])->name('auth.login');
-Route::post('admin/login', [AuthController::class, 'handleLogin'])->name('auth.login');
-Route::post('admin/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::get('register', [AuthController::class, 'showFormRegister'])->name('auth.register');
+Route::post('register', [AuthController::class, 'handleRegister'])->name('auth.register');
+Route::get('login', [AuthController::class, 'showFormLogin'])->name('auth.login');
+Route::post('login', [AuthController::class, 'handleLogin'])->name('auth.login');
+Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 //quản lý người dùng
 Route::get('admin/list-landlord', [UserController::class, 'showListLandlord'])->name('user.listLandlord');
