@@ -62,6 +62,6 @@ Route::get('guest/home',[HomeController::class,'home'])->name('guest.home');
 Route::get('admin/article', [ArticleController::class, 'index'])->name('article.list');  
 Route::get('admin/article/create', [ArticleController::class, 'create'])->name('article.create');         // Lấy tất cả bài viết
 Route::post('admin/article/create', [ArticleController::class, 'store'])->name('article.store');           // Tạo bài viết mới
-Route::get('admin/article/{id}', [ArticleController::class, 'show'])->name('article.edit');        // Lấy bài viết theo ID
+Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');   // Lấy bài viết theo ID
 Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');      // Cập nhật bài viết
 Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');  // Xóa bài viết

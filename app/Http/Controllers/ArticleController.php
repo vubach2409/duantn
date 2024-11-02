@@ -11,7 +11,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('article.index', compact('rooms'));
+        return view('admin.pages.article.index',compact('articles'));
     }
     public function create()
     {
@@ -20,33 +20,83 @@ class ArticleController extends Controller
         return view('admin.pages.article.add', compact('rooms','categories'));
     }
     public function store(Request $request)
+{
+    try {
+        // Xác thực dữ liệu đầu vào
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category_id' => 'nullable|exists:categories,id', // Cho phép null và kiểm tra tồn tại
+            'room_id' => 'required|exists:rooms,id',
+            'description' => 'required|string',
+        ]);
+
+        // Kiểm tra category_id, nếu không có giá trị thì gán 0
+        $category_id = $request->category_id ?? 0;
+
+        // Tạo mới bài viết
+        Article::create([
+            'title' => $request->title,
+            'category_id' => $category_id,
+            'room_id' => $request->room_id,
+            'description' => $request->description,
+        ]);
+
+        // Chuyển hướng với thông báo thành công
+        return redirect()->route('article.list')->with('success', 'Thêm bài viết thành công!');
+    } catch (\Exception $e) {
+        // Xử lý lỗi và chuyển hướng với thông báo lỗi
+        return redirect()->back()->withErrors(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()])->withInput();
+    }
+    
+}
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+        $categories = Category::all(); // Lấy danh sách danh mục
+        $rooms = Room::all(); // Lấy danh sách dịch vụ
+        return view('admin.pages.article.edit', compact('article', 'categories', 'rooms'));
+    }
+    public function update(Request $request, $id)
+    {
+        // Xác thực dữ liệu đầu vào
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category_id' => 'nullable|exists:categories,id', // Cho phép null và kiểm tra tồn tại
+            'room_id' => 'required|exists:rooms,id',
+            'description' => 'required|string',
+        ]);
+
+  
+
+        // Tìm phòng
+        $article = Article::findOrFail($id);
+
+        $category_id = $request->category_id ?? 0;
+
+        // Tạo mới bài viết
+        $article->update([
+            'title' => $request->title,
+            'category_id' => $category_id,
+            'room_id' => $request->room_id,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('article.list')->with('success', 'Cập nhật viết thành công!');
+    }
+
+    public function destroy($id)
     {
         try {
-            // Xác thực dữ liệu đầu vào
-            $request->validate([
-                'title' => 'required|string|max:255',
-                'category_id' => 'required', // Cho phép null
-                'room_id' => 'required|exists:room,id',
-                'description' => 'required|string',
-                
-            ]);
+            $article = Article::findOrFail($id); // Tìm phòng theo ID
 
-            // Kiểm tra category_id, nếu không có giá trị thì gán 0
-            
-            // Tạo mới phòng
-            Article::create([
-                'title' => $request->title,
-                'category_id' => $request->category_id, // Sử dụng giá trị categoryId
-                'room_id' => $request->room_id,
-                'description' => $request->description,
-            
-            ]);
+            // Xóa phòng
+            $article->delete();
+
             // Chuyển hướng với thông báo thành công
-            return redirect()->route('article.list')->with('success', 'Thêm phòng thành công!');
+            return redirect()->route('article.list')->with('success', 'Xóa phòng thành công!');
         } catch (\Exception $e) {
-            // Xử lý lỗi và chuyển hướng với thông báo lỗi
-            return redirect()->back()->withErrors(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()])->withInput();
+            // Chuyển hướng với thông báo lỗi
+            return redirect()->route('article.list')->with('error', 'Có lỗi xảy ra: ' . $e->getMessage());
         }
     }
-   
 }
