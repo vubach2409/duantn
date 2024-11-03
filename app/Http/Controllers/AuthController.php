@@ -5,24 +5,47 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
 
 class AuthController extends Controller
 {
     public function showFormRegister()
     {
-        return view('admin.auths.register');
+        return view('auths.register');
     }
 
     public function handleRegister(Request $request)
     {
         // dd($request->all());
-        User::create($request->all());
-        return redirect('/admin/login')->with('success', 'Tạo tài khoản thành công!');
+        // User::create($request->all());
+        $validator = FacadesValidator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:15|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Thêm quy tắc cho file hình ảnh
+        ]);
+
+        // Xử lý tải lên file avatar
+        $avatarPath = null;
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public'); // Lưu vào thư mục avatars trong storage
+        }
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => $request->password,
+            'avatar' => $avatarPath, // Lưu đường dẫn đến file avatar
+            'role' => 1, // có thể thay đổi theo logic của bạn
+        ]);
+        return redirect('/login')->with('success', 'Tạo tài khoản thành công!');
     }
 
     public function showFormLogin()
     {
-        return view('admin.auths.login');
+        return view('auths.login');
     }
 
     public function handleLogin()
@@ -36,7 +59,7 @@ class AuthController extends Controller
              * @var User $user
              */
             Auth::user();
-            return redirect('/admin/dashboard')->with('success', 'Đăng nhập thành công');
+            return redirect('/admin-main/dashboard')->with('success', 'Đăng nhập thành công');
         }
 
         return back()->withErrors([
