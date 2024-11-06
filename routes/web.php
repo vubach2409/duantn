@@ -35,10 +35,14 @@ Route::post('register', [AuthController::class, 'handleRegister'])->name('auth.r
 Route::get('login', [AuthController::class, 'showFormLogin'])->name('auth.login');
 Route::post('login', [AuthController::class, 'handleLogin'])->name('auth.login');
 Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::get('admin-main/profile', [AuthController::class, 'showProfileAdmin'])->name('admin.profile');
+Route::get('admin-main/profile/{user}/edit', [AuthController::class, 'edit'])->name('admin.profile.edit');
+Route::put('admin-main/profile/{user}/update', [AuthController::class, 'update'])->name('admin.profile.update');
 
 //quản lý người dùng
 Route::get('admin-main/list-landlord', [UserController::class, 'showListLandlord'])->name('admin.user.listLandlord');
 Route::get('admin-main/list-renter', [UserController::class, 'showListRenter'])->name('admin.user.listRenter');
+
 
 //admin chủ trọ
 Route::get('admin/service', [ServiceController::class, 'index'])->name('service.list');
