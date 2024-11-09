@@ -11,12 +11,12 @@ class ServiceController extends Controller
     {
         $services = Service::all();
 
-        return view('admin.pages.service.index', compact('services'));
+        return view('landlord_admin.pages.service.index', compact('services'));
     }
 
     public function create()
     {
-        return view('admin.pages.service.add');
+        return view('landlord_admin.pages.service.add');
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class ServiceController extends Controller
         ]);
 
         Service::create($request->all());
-        return redirect()->route('service.list')->with('success', 'Dịch vụ đã được tạo thành công!');
+        return redirect()->route('landlord_admin.service.list')->with('success', 'Dịch vụ đã được tạo thành công!');
     }
 
     public function show($id)
@@ -43,7 +43,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::findOrFail($id);
-        return view('admin.pages.service.edit', compact('service'));
+        return view('landlord_admin.pages.service.edit', compact('service'));
     }
 
     public function update(Request $request, $id)
@@ -60,7 +60,7 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->update($request->all());
 
-        return redirect()->route('service.list')->with('success', 'Dịch vụ đã được cập nhật thành công!');
+        return redirect()->route('landlord_admin.service.list')->with('success', 'Dịch vụ đã được cập nhật thành công!');
     }
 
     public function destroy($id)
@@ -68,6 +68,6 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->delete(); // Thực hiện xóa dịch vụ
 
-        return redirect()->route('service.list')->with('success', 'Dịch vụ đã được xóa thành công!');
+        return redirect()->route('landlord_admin.service.list')->with('success', 'Dịch vụ đã được xóa thành công!');
     }
 }

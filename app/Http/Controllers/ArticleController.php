@@ -11,13 +11,13 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('admin.pages.article.index',compact('articles'));
+        return view('landlord_admin.pages.article.index',compact('articles'));
     }
     public function create()
     {
         $rooms = Room::all();
         $categories = Category::all();
-        return view('admin.pages.article.add', compact('rooms','categories'));
+        return view('landlord_admin.pages.article.add', compact('rooms','categories'));
     }
     public function store(Request $request)
 {
@@ -42,7 +42,7 @@ class ArticleController extends Controller
         ]);
 
         // Chuyển hướng với thông báo thành công
-        return redirect()->route('article.list')->with('success', 'Thêm bài viết thành công!');
+        return redirect()->route('landlord_admin.article.list')->with('success', 'Thêm bài viết thành công!');
     } catch (\Exception $e) {
         // Xử lý lỗi và chuyển hướng với thông báo lỗi
         return redirect()->back()->withErrors(['error' => 'Có lỗi xảy ra: ' . $e->getMessage()])->withInput();
@@ -54,7 +54,7 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         $categories = Category::all(); // Lấy danh sách danh mục
         $rooms = Room::all(); // Lấy danh sách dịch vụ
-        return view('admin.pages.article.edit', compact('article', 'categories', 'rooms'));
+        return view('landlord_admin.pages.article.edit', compact('article', 'categories', 'rooms'));
     }
     public function update(Request $request, $id)
     {
@@ -81,7 +81,7 @@ class ArticleController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('article.list')->with('success', 'Cập nhật viết thành công!');
+        return redirect()->route('landlord_admin.article.list')->with('success', 'Cập nhật viết thành công!');
     }
 
     public function destroy($id)
@@ -93,10 +93,10 @@ class ArticleController extends Controller
             $article->delete();
 
             // Chuyển hướng với thông báo thành công
-            return redirect()->route('article.list')->with('success', 'Xóa phòng thành công!');
+            return redirect()->route('landlord_admin.article.list')->with('success', 'Xóa phòng thành công!');
         } catch (\Exception $e) {
             // Chuyển hướng với thông báo lỗi
-            return redirect()->route('article.list')->with('error', 'Có lỗi xảy ra: ' . $e->getMessage());
+            return redirect()->route('landlord_admin.article.list')->with('error', 'Có lỗi xảy ra: ' . $e->getMessage());
         }
     }
 }
