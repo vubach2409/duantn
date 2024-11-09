@@ -800,7 +800,7 @@
                     aria-haspopup="true" aria-expanded="false">
                     <span class="d-flex align-items-center">
                         @if (Auth::check())
-                            <img class="rounded-circle header-profile-user" src="{{asset('storage/' .Auth::user()->avatar) }}"
+                            <img class="rounded-circle header-profile-user" src="{{ asset('storage/'.Auth::user()->avatar) }}"
                                 alt="Header Avatar">
                         @endif
                         <span class="text-start ms-xl-2">
@@ -809,7 +809,7 @@
                                     {{ Auth::user()->name }}
                                 </span>
                             @endif
-                            <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Người cho thuê</span>
+                            <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Admin</span>
                         </span>
                     </span>
                 </button>
@@ -819,7 +819,7 @@
                             @csrf
                             <h6 class="dropdown-header">Xin chào {{ Auth::user()->name }}!</h6>
 
-                            <a class="dropdown-item" href="pages-profile.html">
+                            <a class="dropdown-item" href="{{ route('admin.profile') }}">
                                 <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>Thông tin tài
                                 khoản
                             </a>

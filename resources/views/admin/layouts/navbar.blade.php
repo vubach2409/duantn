@@ -29,15 +29,16 @@
         <div id="two-column-menu">
         </div>
         <ul class="navbar-nav" id="navbar-nav">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="{{ route('admin.dashboard') }}" aria-expanded="false"
                     aria-controls="sidebarDashboards">
                     <i class="ri-dashboard-2-line"></i>
                     <span data-key="1">Bảng điều khiển</span>
                 </a>
-            </li> <!-- end Dashboard Menu -->
+            </li>  --}}
+            <!-- end Dashboard Menu -->
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarMultilevel">
                     <i class="ri-share-line"></i> <span data-key="t-multi-level">Quản lý danh mục</span>
@@ -49,7 +50,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
@@ -108,7 +109,7 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarAuth">
                     <i class="ri-account-circle-line"></i> <span data-key="1">Quản lý tài khoản</span>
@@ -157,9 +158,9 @@
 
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarLanding">
                     <i class="ri-rocket-line"></i> <span data-key="1">Quản lý hóa đơn</span>
@@ -179,9 +180,9 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarUI" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarUI">
                     <i class="ri-pencil-ruler-2-line"></i> <span data-key="t-base-ui">Quản lý hoa hồng</span>
@@ -281,9 +282,9 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarAdvanceUI" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarAdvanceUI">
                     <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Báo cáo thông kê</span>
@@ -322,9 +323,9 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="widgets.html">
                     <i class="ri-honour-line"></i> <span data-key="t-widgets">Widgets</span>
                 </a>
@@ -583,7 +584,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
         </ul>
     </div>
     <!-- Sidebar -->

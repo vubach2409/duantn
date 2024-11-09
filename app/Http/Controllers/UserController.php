@@ -9,12 +9,14 @@ class UserController extends Controller
 {
     public function showListLandlord() {
         $users = User::where('role', 1)->get();
-        return view('admin.users.listLandlord', compact('users'));
+        return view('admin-main.users.listLandlord', compact('users'));
     }
 
     public function showListRenter() {
         $users = User::where('role', 2)->get();
-        return view('admin.users.listRenter', compact('users'));
+        return view('admin-main.users.listRenter', compact('users'));
     }
+
+    
 
 }
