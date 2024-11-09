@@ -80,6 +80,9 @@ class AuthController extends Controller
         return redirect('/admin/welcome')->with('success', 'Đã đăng xuất!');
     }
 
+}
+
+
 
     public function showProfileAdmin()
     {
@@ -130,3 +133,4 @@ class AuthController extends Controller
 }
 
 }
+

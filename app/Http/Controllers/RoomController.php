@@ -15,14 +15,14 @@ class RoomController extends Controller
     {
         $rooms = Room::all();
 
-        return view('admin.pages.room.index', compact('rooms'));
+        return view('landlord_admin.pages.room.index', compact('rooms'));
     }
 
     public function create()
     {
         $categories = Category::all(); // Lấy danh sách danh mục
         $services = Service::all(); // Lấy danh sách dịch vụ
-        return view('admin.pages.room.add', compact('categories', 'services'));
+        return view('landlord_admin.pages.room.add', compact('categories', 'services'));
     }
 
     public function store(Request $request)
@@ -74,7 +74,7 @@ class RoomController extends Controller
         $room = Room::findOrFail($id);
         $categories = Category::all(); // Lấy danh sách danh mục
         $services = Service::all(); // Lấy danh sách dịch vụ
-        return view('admin.pages.room.edit', compact('room', 'categories', 'services'));
+        return view('landlord_admin.pages.room.edit', compact('room', 'categories', 'services'));
     }
 
     public function update(Request $request, $id)
