@@ -9,14 +9,15 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 
+    protected $fillable = [
         'category_id',
-        'room_id', 
-        'title',  
-        'description'];
+        'room_id',
+        'title',
+        'description'
+    ];
     public function room()
     {
-    return $this->belongsTo(Room::class);
+        return $this->belongsTo(Room::class);
     }
     public function category()
     {

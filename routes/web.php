@@ -76,17 +76,16 @@ Route::get('admin/service/{id}', [ServiceController::class, 'show'])->name('serv
 
 
 
-//** guest  */
-Route::get('guest/home', [HomeController::class, 'home'])->name('guest.home');
+
 
 //Bài viết
 
-Route::get('admin/article', [ArticleController::class, 'index'])->name('article.list');  
-Route::get('admin/article/create', [ArticleController::class, 'create'])->name('article.create');         
-Route::post('admin/article/create', [ArticleController::class, 'store'])->name('article.store');           
-Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');  
-Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');      
-Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');  
+// Route::get('admin/article', [ArticleController::class, 'index'])->name('article.list');
+// Route::get('admin/article/create', [ArticleController::class, 'create'])->name('article.create');
+// Route::post('admin/article/create', [ArticleController::class, 'store'])->name('article.store');
+// Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+// Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');
+// Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
 
 // LANDLORD
 
@@ -111,13 +110,13 @@ Route::get('landlord_admin/service/{id}', [ServiceController::class, 'show'])->n
 
 
 //Bài viết
-Route::get('landlord_admin/article', [ArticleController::class, 'index'])->name('landlord_admin.article.list');  
-Route::get('landlord_admin/article/create', [ArticleController::class, 'create'])->name('landlord_admin.article.create');         
-Route::post('landlord_admin/article/create', [ArticleController::class, 'store'])->name('landlord_admin.article.store');         
-Route::get('landlord_admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('landlord_admin.article.edit');   
-Route::put('landlord_admin/article/{id}', [ArticleController::class, 'update'])->name('landlord_admin.article.update');      
-Route::delete('landlord_admin/article/{id}', [ArticleController::class, 'destroy'])->name('landlord_admin.article.destroy');  
-=======
+Route::get('landlord_admin/article', [ArticleController::class, 'index'])->name('landlord_admin.article.list');
+Route::get('landlord_admin/article/create', [ArticleController::class, 'create'])->name('landlord_admin.article.create');
+Route::post('landlord_admin/article/create', [ArticleController::class, 'store'])->name('landlord_admin.article.store');
+Route::get('landlord_admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('landlord_admin.article.edit');
+Route::put('landlord_admin/article/{id}', [ArticleController::class, 'update'])->name('landlord_admin.article.update');
+Route::delete('landlord_admin/article/{id}', [ArticleController::class, 'destroy'])->name('landlord_admin.article.destroy');
+
 Route::get('admin/article', [ArticleController::class, 'index'])->name('article.list');
 Route::get('admin/article/create', [ArticleController::class, 'create'])->name('article.create');         // Lấy tất cả bài viết
 Route::post('admin/article/create', [ArticleController::class, 'store'])->name('article.store');           // Tạo bài viết mới
@@ -142,3 +141,7 @@ Route::get('admin-main/category/{id}/edit', [CategoryController::class, 'edit'])
 Route::put('admin-main/category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
 Route::delete('admin-main/category/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
 
+
+//** guest  */
+Route::get('guest/home', [HomeController::class, 'home'])->name('guest.home');
+Route::get('guest/detail/{article}', [HomeController::class, 'detail'])->name('guest.detail');

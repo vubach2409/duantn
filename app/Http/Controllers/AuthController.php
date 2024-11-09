@@ -17,30 +17,32 @@ class AuthController extends Controller
 
     public function handleRegister(Request $request)
     {
-        // dd($request->all());
-        // User::create($request->all());
         $validator = FacadesValidator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:15|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Thêm quy tắc cho file hình ảnh
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Xử lý tải lên file avatar
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $avatarPath = null;
         if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public'); // Lưu vào thư mục avatars trong storage
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
         }
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'password' => $request->password,
-            'avatar' => $avatarPath, // Lưu đường dẫn đến file avatar
-            'role' => 1, // có thể thay đổi theo logic của bạn
+            'password' => bcrypt($request->password),  // Mã hóa mật khẩu trước khi lưu
+            'avatar' => $avatarPath,
+            'role' => 1,
         ]);
+
         return redirect('/login')->with('success', 'Tạo tài khoản thành công!');
     }
 
@@ -51,15 +53,10 @@ class AuthController extends Controller
 
     public function handleLogin()
     {
-        // dd(request()->all());
         $credentials = request()->except('_token');
 
         if (Auth::attempt($credentials)) {
             request()->session()->regenerate();
-            /**
-             * @var User $user
-             */
-            Auth::user();
             return redirect('/admin-main/dashboard')->with('success', 'Đăng nhập thành công');
         }
 
@@ -80,15 +77,10 @@ class AuthController extends Controller
         return redirect('/admin/welcome')->with('success', 'Đã đăng xuất!');
     }
 
-}
-
-
-
     public function showProfileAdmin()
     {
         return view('auths.profile-admin');
     }
-
 
     public function edit()
     {
@@ -96,41 +88,32 @@ class AuthController extends Controller
         return view('auths.profile-admin-edit', compact('user'));
     }
 
-    // Xử lý cập nhật thông tin
     public function update(Request $request, $id)
-{
-    $user = User::findOrFail($id);
+    {
+        $user = User::findOrFail($id);
 
-    // Validate dữ liệu
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email,' . $user->id, // Đảm bảo không trùng với email của người dùng hiện tại
-        'phone' => 'required|unique:users,phone,' . $user->id, // Đảm bảo không trùng với số điện thoại của người dùng hiện tại
-        'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Tùy chọn upload ảnh
-    ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'required|unique:users,phone,' . $user->id,
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
-    // Cập nhật thông tin
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->phone = $request->phone;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
 
-    // Xử lý avatar nếu có file tải lên
-    if ($request->hasFile('avatar')) {
-        // Xóa avatar cũ nếu có
-        if ($user->avatar) {
-            Storage::delete('public/' . $user->avatar);
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar) {
+                Storage::delete('public/' . $user->avatar);
+            }
+
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = $path;
         }
 
-        // Lưu avatar mới
-        $path = $request->file('avatar')->store('avatars', 'public');
-        $user->avatar = $path;
+        $user->save();
+
+        return redirect()->route('admin.profile')->with('success', 'Cập nhật thông tin thành công.');
     }
-
-    // Lưu các thay đổi vào cơ sở dữ liệu
-    $user->save();
-
-    return redirect()->route('admin.profile')->with('success', 'Cập nhật thông tin thành công.');
 }
-
-}
-
