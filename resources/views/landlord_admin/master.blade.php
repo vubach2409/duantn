@@ -38,7 +38,7 @@
 
         {{-- HEADER --}}
         <header id="page-topbar">
-            @include('admin.layouts.header')
+            @include('landlord_admin.layouts.header')
         </header>
 
         <!-- removeNotificationModal -->
@@ -623,7 +623,7 @@
             <!-- End Page-content -->
 
             <footer class="footer">
-                @include('admin.layouts.footer')
+                @include('landlord_admin.layouts.footer')
             </footer>
         </div>
         <!-- end main content-->

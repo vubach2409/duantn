@@ -649,7 +649,7 @@
                 <div class="collapse menu-dropdown" id="sidebarApps">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
-                            <a href="{{ route('room.list') }}" class="nav-link">
+                            <a href="{{ route('admin.room.list') }}" class="nav-link">
                                 Danh sách phòng
                             </a>
                             {{-- <div class="collapse menu-dropdown" id="sidebarCalendar">
@@ -666,8 +666,8 @@
                             </div> --}}
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('service.list') }}" class="nav-link">
-                                Danh sách dịch vụ
+                            <a href="{{ route('admin.room.create') }}" class="nav-link">
+                                Thêm mới phòng
                             </a>
                         </li>
                     </ul>

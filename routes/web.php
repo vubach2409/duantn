@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin-main/dashboard', function () {
+Route::get('admin/dashboard', function () {
     return view('admin-main.dashboard');
 })->name('admin.dashboard');
 Route::get('/admin/welcome', function () {
@@ -41,9 +41,9 @@ Route::post('register', [AuthController::class, 'handleRegister'])->name('auth.r
 Route::get('login', [AuthController::class, 'showFormLogin'])->name('auth.login');
 Route::post('login', [AuthController::class, 'handleLogin'])->name('auth.login');
 Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
-Route::get('admin-main/profile', [AuthController::class, 'showProfileAdmin'])->name('admin.profile');
-Route::get('admin-main/profile/{user}/edit', [AuthController::class, 'edit'])->name('admin.profile.edit');
-Route::put('admin-main/profile/{user}/update', [AuthController::class, 'update'])->name('admin.profile.update');
+Route::get('admin/profile', [AuthController::class, 'showProfileAdmin'])->name('admin.profile');
+Route::get('admin/profile/{user}/edit', [AuthController::class, 'edit'])->name('admin.profile.edit');
+Route::put('admin/profile/{user}/update', [AuthController::class, 'update'])->name('admin.profile.update');
 
 //quản lý người dùng
 
@@ -51,41 +51,9 @@ Route::get('admin/list-landlord', [UserController::class, 'showListLandlord'])->
 Route::get('admin/list-renter', [UserController::class, 'showListRenter'])->name('user.listRenter');
 // Service
 
-Route::get('admin-main/list-landlord', [UserController::class, 'showListLandlord'])->name('admin.user.listLandlord');
-Route::get('admin-main/list-renter', [UserController::class, 'showListRenter'])->name('admin.user.listRenter');
+Route::get('admin/list-landlord', [UserController::class, 'showListLandlord'])->name('admin.user.listLandlord');
+Route::get('admin/list-renter', [UserController::class, 'showListRenter'])->name('admin.user.listRenter');
 
-
-//admin chủ trọ
-
-
-Route::get('admin/service', [ServiceController::class, 'index'])->name('service.list');
-Route::get('admin/service/create', [ServiceController::class, 'create'])->name('service.create');
-Route::post('admin/service/create', [ServiceController::class, 'store'])->name('service.store');
-Route::get('admin/service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
-Route::put('admin/service/{id}', [ServiceController::class, 'update'])->name('service.update');
-Route::delete('admin/service/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
-
-//Room
-Route::get('admin/room', [RoomController::class, 'index'])->name('room.list');
-Route::get('admin/room/create', [RoomController::class, 'create'])->name('room.create');
-Route::post('admin/room/create', [RoomController::class, 'store'])->name('room.store');
-Route::get('admin/room/{id}/edit', [RoomController::class, 'edit'])->name('room.edit');
-Route::put('admin/room/{id}', [RoomController::class, 'update'])->name('room.update');
-Route::delete('admin/room/{id}', [RoomController::class, 'destroy'])->name('room.destroy');
-Route::get('admin/service/{id}', [ServiceController::class, 'show'])->name('service.show');
-
-
-
-
-
-//Bài viết
-
-// Route::get('admin/article', [ArticleController::class, 'index'])->name('article.list');
-// Route::get('admin/article/create', [ArticleController::class, 'create'])->name('article.create');
-// Route::post('admin/article/create', [ArticleController::class, 'store'])->name('article.store');
-// Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
-// Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');
-// Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
 
 // LANDLORD
 
@@ -127,19 +95,19 @@ Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name
 
 
 //admin chính
-Route::get('admin-main/room', [RoomAdminController::class, 'index'])->name('admin.room.list');
-Route::get('admin-main/room/create', [RoomAdminController::class, 'create'])->name('admin.room.create');
-Route::post('admin-main/room/create', [RoomAdminController::class, 'store'])->name('admin.room.store');
-Route::get('admin-main/room/{id}/edit', [RoomAdminController::class, 'edit'])->name('admin.room.edit');
-Route::put('admin-main/room/{id}', [RoomAdminController::class, 'update'])->name('admin.room.update');
-Route::delete('admin-main/room/{id}', [RoomAdminController::class, 'destroy'])->name('admin.room.destroy');
+Route::get('admin/room', [RoomAdminController::class, 'index'])->name('admin.room.list');
+Route::get('admin/room/create', [RoomAdminController::class, 'create'])->name('admin.room.create');
+Route::post('admin/room/create', [RoomAdminController::class, 'store'])->name('admin.room.store');
+Route::get('admin/room/{id}/edit', [RoomAdminController::class, 'edit'])->name('admin.room.edit');
+Route::put('admin/room/{id}', [RoomAdminController::class, 'update'])->name('admin.room.update');
+Route::delete('admin/room/{id}', [RoomAdminController::class, 'destroy'])->name('admin.room.destroy');
 
-Route::get('admin-main/category', [CategoryController::class, 'index'])->name('admin.category.list');
-Route::get('admin-main/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
-Route::post('admin-main/category/create', [CategoryController::class, 'store'])->name('admin.category.store');
-Route::get('admin-main/category/{id}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
-Route::put('admin-main/category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
-Route::delete('admin-main/category/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
+Route::get('admin/category', [CategoryController::class, 'index'])->name('admin.category.list');
+Route::get('admin/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
+Route::post('admin/category/create', [CategoryController::class, 'store'])->name('admin.category.store');
+Route::get('admin/category/{id}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+Route::put('admin/category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+Route::delete('admin/category/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
 
 
 //** guest  */

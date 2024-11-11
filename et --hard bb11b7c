@@ -1,0 +1,23 @@
+[33m0282703[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: pull origin master: Fast-forward
+[33mbb11b7c[m HEAD@{1}: commit: client
+[33mecd58c4[m HEAD@{2}: pull origin master: Fast-forward
+[33m5dbc75d[m HEAD@{3}: commit: admin profile
+[33mcd73b20[m HEAD@{4}: commit: admin chinh
+[33mfde8bdb[m HEAD@{5}: pull origin master: Merge made by the 'ort' strategy.
+[33m1b4c141[m HEAD@{6}: commit: Your commit message here
+[33mabf654c[m HEAD@{7}: pull origin master: Fast-forward
+[33m5999b09[m HEAD@{8}: reset: moving to 5999b09
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{9}: checkout: moving from master to master
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{10}: checkout: moving from thang to master
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{11}: checkout: moving from thanghoang to thang
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{12}: checkout: moving from master to thanghoang
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{13}: checkout: moving from thang to master
+[33me050354[m HEAD@{14}: checkout: moving from master to thang
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{15}: checkout: moving from thang to master
+[33me050354[m HEAD@{16}: checkout: moving from thang to thang
+[33me050354[m HEAD@{17}: commit: admin main
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{18}: checkout: moving from master to thang
+[33m829ecff[m[33m ([m[1;32mthanghoang[m[33m, [m[1;32mthang[m[33m)[m HEAD@{19}: pull origin master: Fast-forward
+[33m5999b09[m HEAD@{20}: pull origin master: Fast-forward
+[33m8230845[m HEAD@{21}: commit: add db
+[33m08ff7ff[m HEAD@{22}: commit (initial): datn-wd159
