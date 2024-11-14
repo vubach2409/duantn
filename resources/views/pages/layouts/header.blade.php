@@ -242,9 +242,11 @@
                                         class="number-cart">1</span></a>
                             </li>
                         </ul>
+                        @if (Auth::user()->role === 2)
                         <div class="nav-btn">
                             <a href="#" class="btn btn-orange">Book Now</a>
                         </div>
+                        @endif
                     </div>
 
                     <div id="slicknav-mobile"></div>
