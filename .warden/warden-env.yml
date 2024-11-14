@@ -1,0 +1,23 @@
+services:
+    php-fpm:
+        labels:
+            - traefik.enable=true
+            - traefik.http.routers.${WARDEN_ENV_NAME}-vite.tls=true
+            - traefik.http.routers.${WARDEN_ENV_NAME}-vite.priority=3
+            - traefik.http.routers.${WARDEN_ENV_NAME}-vite.rule=Host(`vite.${TRAEFIK_DOMAIN}`)
+            - traefik.http.routers.${WARDEN_ENV_NAME}-vite.service=${WARDEN_ENV_NAME}-vite
+            - traefik.http.services.${WARDEN_ENV_NAME}-vite.loadbalancer.server.port=5173
+            - traefik.docker.network=${WARDEN_ENV_NAME}_default
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        hostname: ${WARDEN_ENV_NAME}-phpmyadmin
+        labels:
+            - traefik.enable=true
+            - traefik.http.routers.${WARDEN_ENV_NAME}-phpmyadmin.tls=true
+            - traefik.http.routers.${WARDEN_ENV_NAME}-phpmyadmin.rule=Host(`phpmyadmin.${TRAEFIK_DOMAIN}`)
+            - traefik.docker.network=${WARDEN_ENV_NAME}_default
+        environment:
+            - PMA_HOSTS=db
+            - PMA_USER=laravel
+            - PMA_PASSWORD=laravel
